@@ -161,7 +161,9 @@ local V = {
 		
 		ForceTransmission = 1,
 		DifferentialGear = 0.3,
-		Gears = {-0.1,0,0.1,0.2,0.3}
+		Gears = {-0.1,0,0.1,0.2,0.3},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_combineapc_armed", V )
@@ -234,7 +236,9 @@ local V = {
 		
 		ForceTransmission = 1,
 		DifferentialGear = 0.3,
-		Gears = {-0.15,0,0.15,0.25,0.35,0.45}
+		Gears = {-0.15,0,0.15,0.25,0.35,0.45},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_jeep_armed", V )
@@ -307,7 +311,9 @@ local V = {
 		
 		ForceTransmission = 1,
 		DifferentialGear = 0.3,
-		Gears = {-0.15,0,0.15,0.25,0.35,0.45}
+		Gears = {-0.15,0,0.15,0.25,0.35,0.45},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_jeep_armed2", V )
@@ -404,7 +410,9 @@ local V = {
 		snd_horn = "simulated_vehicles/horn_4.wav",
 		
 		DifferentialGear = 0.38,
-		Gears = {-0.1,0,0.1,0.18,0.25,0.31,0.40}
+		Gears = {-0.1,0,0.1,0.18,0.25,0.31,0.40},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_v8elite_armed", V )
@@ -501,7 +509,9 @@ local V = {
 		snd_horn = "simulated_vehicles/horn_4.wav",
 		
 		DifferentialGear = 0.38,
-		Gears = {-0.1,0,0.1,0.18,0.25,0.31,0.40}
+		Gears = {-0.1,0,0.1,0.18,0.25,0.31,0.40},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_v8elite_armed2", V )
@@ -728,7 +738,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.27,
-		Gears = {-0.09,0,0.09,0.18,0.28,0.35}
+		Gears = {-0.09,0,0.09,0.18,0.28,0.35},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_conscriptapc_armed", V )
@@ -866,7 +878,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.28,
-		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5}
+		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_ratmobile", V )
@@ -1003,7 +1017,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.25,
-		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5}
+		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_chaos126p", V )
@@ -1139,7 +1155,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.32,
-		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5}
+		Gears = {-0.1,0,0.1,0.2,0.3,0.4,0.5},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_hedgehog", V )
@@ -1319,7 +1337,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.21,
-		Gears = {-0.1,0,0.05,0.07,0.09,0.11,0.13}
+		Gears = {-0.1,0,0.05,0.07,0.09,0.11,0.13},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_tank", V )
@@ -1485,7 +1505,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.3,
-		Gears = {-0.1,0,0.05,0.08,0.11,0.12}
+		Gears = {-0.1,0,0.05,0.08,0.11,0.12},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_tank2", V )
@@ -1726,7 +1748,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.4,
-		Gears = {-0.06,0,0.06,0.08,0.1,0.12,0.13}
+		Gears = {-0.06,0,0.06,0.08,0.1,0.12,0.13},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_tank3", V )
@@ -1902,7 +1926,9 @@ local V = {
 		ForceTransmission = 1,
 		
 		DifferentialGear = 0.4,
-		Gears = {-0.06,0,0.06,0.08,0.1,0.12,0.13}
+		Gears = {-0.06,0,0.06,0.08,0.1,0.12,0.13},
+
+		ArmedSimfphys = true
 	}
 }
 list.Set( "simfphys_vehicles", "sim_fphys_tank4", V )
