@@ -173,7 +173,7 @@ function simfphys.weapon:Think( vehicle )
 	vehicle.NextShoot = vehicle.NextShoot or 0
 	if vehicle.NextShoot < curtime then
 		if fire then
-			cAPCFire(ply,vehicle,shootOrigin,Attachment,25,ID)
+			cAPCFire(ply,vehicle,shootOrigin,Attachment,35,ID)
 			vehicle:EmitSound("Weapon_AR2.Single")
 			
 			vehicle.charge = vehicle.charge - 2.5
