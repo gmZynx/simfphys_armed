@@ -360,7 +360,11 @@ local IsValidDMGType = {
 function simfphys.TankApplyDamage(ent, Damage, Type)
 	if not IsValid( ent ) or not isnumber( Damage ) or not isnumber( Type ) then return end
 	
-	if Type == DMG_PROPEXPLOSION then Damage = Damage * 10 end
+	if ( Type == DMG_PROPEXPLOSION ) or ( Type == DMG_BLAST ) then Damage = Damage * 10 end
+
+	if Type == DMG_BULLET then
+		damage = damage * 2
+	end
 	
 	--if IsValidDMGType[ Type ] or (DMGTypeException[ Type ] and Damage > 100) then
 		local MaxHealth = ent:GetMaxHealth()
