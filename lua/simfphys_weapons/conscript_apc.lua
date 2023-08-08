@@ -8,7 +8,7 @@ local function mg_fire(ply,vehicle,shootOrigin,shootDirection)
 		projectile.shootDirection = shootDirection
 		projectile.attacker = ply
 		projectile.attackingent = vehicle
-		projectile.Damage = 100
+		projectile.Damage = 50
 		projectile.Force = 50
 		projectile.Size = 3
 		projectile.BlastRadius = 50
