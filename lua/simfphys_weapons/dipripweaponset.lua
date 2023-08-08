@@ -23,7 +23,7 @@ local function minigunfire(ply,vehicle,shootOrigin,shootDirection)
 		projectile.Spread = Vector(0.015,0.015,0.015)
 		projectile.HullSize = 5
 		projectile.attackingent = vehicle
-		projectile.Damage = 40
+		projectile.Damage = 10
 		projectile.Force = 12
 	simfphys.FireHitScan( projectile )
 end
