@@ -362,11 +362,7 @@ function simfphys.TankApplyDamage(ent, Damage, Type)
 	
 	if Type == DMG_PROPEXPLOSION then Damage = Damage * 10 end
 	
-	if IsValidDMGType[ Type ] or (DMGTypeException[ Type ] and Damage > 100) then
-		if DMGTypeException[ Type ] then
-			Damage = Damage - 100
-		end
-
+	--if IsValidDMGType[ Type ] or (DMGTypeException[ Type ] and Damage > 100) then
 		local MaxHealth = ent:GetMaxHealth()
 		local CurHealth = ent:GetCurHealth()
 		
@@ -388,10 +384,8 @@ function simfphys.TankApplyDamage(ent, Damage, Type)
 		end
 		
 		if NewHealth <= 0 then
-			if (Type ~= DMG_GENERIC and Type ~= DMG_CRUSH) or Damage > MaxHealth then
-				
+			if (Type ~= DMG_CRUSH) then
 				ent:ExplodeVehicle()
-				
 				return
 			end
 			
@@ -405,7 +399,7 @@ function simfphys.TankApplyDamage(ent, Damage, Type)
 		end
 		
 		ent:SetCurHealth( NewHealth )
-	end
+	--end
 end
 
 hook.Add("Think", "simfphys_weaponhandler", function()
