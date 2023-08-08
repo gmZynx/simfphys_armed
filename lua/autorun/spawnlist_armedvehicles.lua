@@ -570,39 +570,7 @@ local V = {
 			{
 				pos = Vector(13,75,-3.5),
 				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
-			{
-				pos = Vector(0,0,-3.5),
-				ang = Angle(0,0,0)
-			},
+			}
 		},
 		
 		Attachments = {
