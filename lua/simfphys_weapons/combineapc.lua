@@ -134,9 +134,18 @@ function simfphys.weapon:Think( vehicle )
 					vehicle.missle:SetPos( attch.Pos )
 					vehicle.missle:SetAngles( attch.Ang - Angle(15,0,0) )
 					vehicle.missle:SetOwner( vehicle )
-					vehicle.missle:SetSaveValue( "m_flDamage", 250 )
+					vehicle.missle:SetSaveValue( "m_flDamage", 0 )
 					vehicle.missle:Spawn()
 					vehicle.missle:Activate()
+
+					local missile = vehicle.missle
+					local future_owner = vehicle:GetDriver()
+					timer.Simple( .7, function()
+						if missile:IsValid() then
+							missile:SetOwner( future_owner )
+							missile:SetSaveValue( "m_flDamage", 120 )
+						end
+					end )
 					
 					vehicle.missle.DirVector = vehicle.missle:GetAngles():Forward()
 					
