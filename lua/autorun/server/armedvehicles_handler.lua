@@ -332,122 +332,58 @@ function simfphys.WeaponSystemRegister( vehicle )
 end
 
 local DMG_PROPEXPLOSION = 134217792 -- should use CTakeDamageInfo:IsDamageType( number dmgType ) at some point
-local DMG_LUABULLET = 8194
 
-local DMGTypeException = {
-	[DMG_LUABULLET] = true,
-	[DMG_BULLET] = true,
-}
-
-local IsValidDMGType = {
-	[DMG_PROPEXPLOSION] = true,
-	[DMG_BLAST] = true,
-	[DMG_BLAST_SURFACE] = true,
-	[DMG_ENERGYBEAM] = true,
-	[DMG_SHOCK] = true,
-	[DMG_CRUSH] = true,
-	[DMG_GENERIC] = true,
-	[DMG_DIRECT] = true,
-	[DMG_SLOWBURN] = true,
-	[DMG_BURN] = true,
-	[DMG_NEVERGIB] = true,
-	[DMG_ALWAYSGIB] = true,
-	[DMG_SNIPER] = true,
-	[DMG_CLUB] = true,
-	[DMG_MISSILEDEFENSE] = true,
-}
-
-function simfphys.TankApplyDamage(ent, Damage, Type)
-	if not IsValid( ent ) or not isnumber( Damage ) or not isnumber( Type ) then return end
+function simfphys.TankApplyDamage( ent, Damage, Type )
+	if not ent:IsValid() or not isnumber( Damage ) or not isnumber( Type ) then return end
 	
 	if ( Type == DMG_PROPEXPLOSION ) or ( Type == DMG_BLAST ) then Damage = Damage * 10 end
 
 	if Type == DMG_BULLET then
-		damage = damage * 2
+		Damage = Damage * 2
 	end
-	
-	--if IsValidDMGType[ Type ] or (DMGTypeException[ Type ] and Damage > 100) then
-		local MaxHealth = ent:GetMaxHealth()
-		local CurHealth = ent:GetCurHealth()
+
+	local MaxHealth = ent:GetMaxHealth()
+	local CurHealth = ent:GetCurHealth()
 		
-		local NewHealth = math.max( math.Round(CurHealth - Damage,0) , 0 )
+	local NewHealth = math.Round( CurHealth - Damage, 0 )
 		
-		if NewHealth <= (MaxHealth * 0.6) then
-			if NewHealth <= (MaxHealth * 0.3) then
-				ent:SetOnFire( true )
-				ent:SetOnSmoke( false )
-			else
-				ent:SetOnSmoke( true )
-			end
+	if NewHealth <= ( MaxHealth * 0.6 ) then
+		if NewHealth <= ( MaxHealth * 0.3 ) then
+			ent:SetOnFire( true )
+			ent:SetOnSmoke( false )
+		else
+			ent:SetOnSmoke( true )
 		end
+	end
 		
-		if MaxHealth > 30 and NewHealth <= 31 then
-			if ent:EngineActive() then
-				ent:DamagedStall()
-			end
-		end
+	if MaxHealth > 30 and NewHealth <= 31 and ent:EngineActive() then
+		ent:DamagedStall()
+	end
 		
-		if NewHealth <= 0 then
-			if (Type ~= DMG_CRUSH) then
-				ent:ExplodeVehicle()
-				return
-			end
-			
-			if ent:EngineActive() then
-				ent:DamagedStall()
-			end
-			
-			ent:SetCurHealth( 0 )
-			
+	if NewHealth <= 0 then
+		if ( Type ~= DMG_CRUSH ) then
+			ent:ExplodeVehicle()
 			return
 		end
-		
-		ent:SetCurHealth( NewHealth )
-	--end
+			
+		if ent:EngineActive() then
+			ent:DamagedStall()
+		end
+	end
+
+	ent:SetCurHealth( ( NewHealth > 0 ) and NewHealth or 0 )
 end
 
 hook.Add("Think", "simfphys_weaponhandler", function()
 	if simfphys.ManagedVehicles then
 		for k, v in pairs( simfphys.ManagedVehicles ) do
-			if IsValid( v.entity ) then
+			if v.entity:IsValid() then
 				if v.func then
-					v.func.Think( v.func,v.entity )
+					v.func.Think( v.func, v.entity )
 				end
 			else
-				simfphys.ManagedVehicles[k] = nil
+				simfphys.ManagedVehicles[ k ] = nil
 			end
-		end
-	end
-end)
-
-timer.Simple(18, function() 
-	if simfphys.VERSION < 1.2 then
-		print( "[SIMFPHYS ARMED]: SIMFPHYS BASE IS OUT OF DATE!" )
-		
-		if (simfphys.armedAutoRegister and not simfphys.armedAutoRegister()) or simfphys.RegisterEquipment then
-			print("[SIMFPHYS ARMED]: ONE OF YOUR ADDITIONAL SIMFPHYS-ARMED PACKS IS CAUSING CONFLICTS!!!")
-			print("[SIMFPHYS ARMED]: PRECAUTIONARY RESTORING FUNCTION:")
-			print("[SIMFPHYS ARMED]: simfphys.FireHitScan")
-			print("[SIMFPHYS ARMED]: simfphys.FirePhysProjectile")
-			print("[SIMFPHYS ARMED]: simfphys.RegisterCrosshair")
-			print("[SIMFPHYS ARMED]: simfphys.RegisterCamera")
-			print("[SIMFPHYS ARMED]: simfphys.armedAutoRegister")
-			print("[SIMFPHYS ARMED]: REMOVING FUNCTION:")
-			print("[SIMFPHYS ARMED]: simfphys.RegisterEquipment")
-			print("[SIMFPHYS ARMED]: CLEARING OUTDATED ''RegisterEquipment'' HOOK")
-			print("[SIMFPHYS ARMED]: !!!FUNCTIONALITY IS NOT GUARANTEED!!!")
-		
-			simfphys.FireHitScan = function( data ) simfphys.FireBullet( data ) end
-			simfphys.FirePhysProjectile = function( data ) simfphys.FirePhysBullet( data ) end
-			simfphys.RegisterCrosshair = function( ent, data ) simfphys.xhairRegister( ent, data ) end
-			simfphys.RegisterCamera = 
-				function( ent, offset_firstperson, offset_thirdperson, bLocalAng, attachment )
-					simfphys.CameraRegister( ent, offset_firstperson, offset_thirdperson, bLocalAng, attachment )
-				end
-			
-			hook.Remove( "PlayerSpawnedVehicle","simfphys_armedvehicles" )
-			simfphys.RegisterEquipment = nil
-			simfphys.armedAutoRegister = function( vehicle ) simfphys.WeaponSystemRegister( vehicle ) return true end
 		end
 	end
 end)
