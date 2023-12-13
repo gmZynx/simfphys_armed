@@ -333,7 +333,9 @@ end
 function simfphys.weapon:PrimaryAttack( vehicle, ply, shootOrigin, Attachment )
 	if not self:CanPrimaryAttack( vehicle ) then return end
 	
-	cannon_fire( ply, vehicle, shootOrigin, Attachment.Ang:Up() )
+	local dir = Attachment.Ang:Up()
+	local trace = util.QuickTrace( shootOrigin - dir * 170, dir * 170, vehicle )
+	cannon_fire( ply, vehicle, trace.HitPos, dir )
 	
 	self:SetNextPrimaryFire( vehicle, CurTime() + 5 )
 end

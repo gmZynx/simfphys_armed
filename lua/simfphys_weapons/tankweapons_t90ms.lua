@@ -312,7 +312,9 @@ function simfphys.weapon:PrimaryAttack( vehicle, ply, shootOrigin, Attachment )
 	local shootDirection = Attachment.Ang:Forward()
 	
 	vehicle:PlayAnimation( "fire" )
-	cannon_fire( ply, vehicle, shootOrigin + shootDirection * 80, shootDirection )
+	
+	local trace = util.QuickTrace( shootOrigin - shootDirection * 190, shootDirection * 190, vehicle )
+	cannon_fire( ply, vehicle, trace.HitPos, shootDirection )
 	
 	self:SetNextPrimaryFire( vehicle, CurTime() + 4.5 )
 end
