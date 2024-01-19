@@ -1,25 +1,3 @@
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
--- DO NOT EDIT OR REUPLOAD THIS SCRIPT
-
-resource.AddWorkshop("831680603")
-
 simfphys = istable( simfphys ) and simfphys or {}
 
 simfphys.ManagedVehicles = istable( simfphys.ManagedVehicles ) and simfphys.ManagedVehicles or {}
@@ -28,12 +6,6 @@ simfphys.weapon = {}
 
 util.AddNetworkString( "simfphys_tank_do_effect" ) -- some people still use this so we have to keep it
 util.AddNetworkString( "simfphys_update_tracks" )
-
---resource.AddSingleFile( "materials/effects/simfphys_armed/gauss_beam.vmt" )
---resource.AddSingleFile( "materials/effects/simfphys_armed/gauss_beam.vtf" )
---resource.AddSingleFile( "materials/effects/simfphys_armed/spark.vmt" )
---resource.AddSingleFile( "materials/effects/simfphys_armed/spark.vtf" )
---resource.AddSingleFile( "materials/effects/simfphys_armed/spark_brightness.vtf" )
 
 local ImpactSounds = {
 	"physics/metal/metal_sheet_impact_bullet2.wav",
